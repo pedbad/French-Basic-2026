@@ -1,5 +1,5 @@
 // src/components/Accordion/Section.jsx
-import { Children, cloneElement, isValidElement, memo } from 'react';
+import { memo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   BackToTopButton,
@@ -10,6 +10,7 @@ import { Separator } from "@/components/ui/separator";
 import DOMPurify from "dompurify";
 import { InstructionsMedia } from "./instructions-media";
 import { applyInstructionTypographyToHTML, INSTRUCTION_TEXT_CLASS } from "./instructionTypography";
+import { withSuppressedChildInfo } from "@/lib/suppressChildInfo";
 
 const splitDisplayTitle = (value) => {
   if (typeof value !== "string") return null;
@@ -105,12 +106,9 @@ function SectionComponent({
       informationTextHTML
   );
 
-  const enhancedChildren = Children.map(children, (child) => {
-    if (isValidElement(child) && shouldSuppressChildInfo) {
-      return cloneElement(child, { suppressInfo: true });
-    }
-    return child;
-  });
+  const enhancedChildren = shouldSuppressChildInfo
+    ? withSuppressedChildInfo(children)
+    : children;
 
   return (
     <RootTag

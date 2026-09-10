@@ -4,6 +4,7 @@ import DOMPurify from "dompurify";
 import React from "react";
 
 import { Info } from "..";
+import { withSuppressedChildInfo } from "@/lib/suppressChildInfo";
 
 const ACCORDION_TITLE_TEXT_CLASS = "text-base";
 const ACCORDION_TITLE_STYLE = {
@@ -128,9 +129,7 @@ export function AccordionArticle({
   const shouldSuppressChildInfo = hasInfo;
   const RootTag = semanticAs === "section" ? "section" : "article";
   const renderedChildren = shouldSuppressChildInfo
-    ? React.Children.map(children, (child) =>
-      React.isValidElement(child) ? React.cloneElement(child, { suppressInfo: true }) : child
-    )
+    ? withSuppressedChildInfo(children)
     : children;
 
   return (
