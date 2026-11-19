@@ -24,7 +24,7 @@ export const SOCIAL_LINKS = [
     variant: "linkedin",
   },
   {
-    href: "https://www.instagram.com/cambridgeuniversity/",
+    href: "https://www.instagram.com/camb_uni_language_programmes/",
     img: "/img/common/social/instagram.svg",
     label: "Instagram",
     variant: "instagram",
