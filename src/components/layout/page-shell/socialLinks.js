@@ -18,7 +18,7 @@ export const SOCIAL_LINKS = [
     variant: "youtube",
   },
   {
-    href: "https://www.linkedin.com/company/university-of-cambridge-language-centre/posts/?feedView=all",
+    href: "https://www.linkedin.com/school/university-of-cambridge/posts/",
     img: "/img/common/social/linkedin.svg",
     label: "LinkedIn",
     variant: "linkedin",
